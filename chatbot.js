@@ -233,10 +233,10 @@ style.textContent += `
         }
     });
 
-    // document.getElementById('chat-input').disabled = true;
-    // document.querySelector('.chat-footer button').disabled = true;
-    // document.getElementById('chat-input').classList.add('loading');
-    // document.querySelector('.chat-footer button').classList.add('loading');
+    document.getElementById('chat-input').disabled = true;
+    document.querySelector('.chat-footer button').disabled = true;
+    document.getElementById('chat-input').classList.add('loading');
+    document.querySelector('.chat-footer button').classList.add('loading');
 
     function showMessageBox() {
         messageBox.style.display = 'block';
@@ -326,10 +326,10 @@ style.textContent += `
 
         socket.onopen = function() {
             wsConnected = true;
-            // document.getElementById('chat-input').classList.remove('loading');
-            // document.getElementById('chat-input').disabled = false;
-            // document.querySelector('.chat-footer button').classList.remove('loading');
-            // document.querySelector('.chat-footer button').disabled = false;
+            document.getElementById('chat-input').classList.remove('loading');
+            document.getElementById('chat-input').disabled = false;
+            document.querySelector('.chat-footer button').classList.remove('loading');
+            document.querySelector('.chat-footer button').disabled = false;
 
         };
 
@@ -356,15 +356,15 @@ style.textContent += `
         const message = input.value.trim();
         if (message && socket) {
             displayMessage(message, 'user');
-            if (!wsConnected) {
-                showLoading();
-                input.value = '';
-            }
-            let counter = 0;
-            while(!wsConnected && counter < 10) {
-                setTimeout(1000)
-                counter++;
-            }
+            // if (!wsConnected) {
+            //     showLoading();
+            //     input.value = '';
+            // }
+            // let counter = 0;
+            // while(!wsConnected && counter < 10) {
+            //     setTimeout(1000)
+            //     counter++;
+            // }
             socket.send(JSON.stringify({ message: message, chat_id: currentChatId }));
             showLoading();
             input.value = '';

@@ -360,8 +360,10 @@ style.textContent += `
                 showLoading();
                 input.value = '';
             }
-            while(!wsConnected) {
+            let counter = 0;
+            while(!wsConnected && counter < 40) {
                 setTimeout(100)
+                counter++;
             }
             socket.send(JSON.stringify({ message: message, chat_id: currentChatId }));
             showLoading();
@@ -377,7 +379,7 @@ style.textContent += `
         const messageContainer = document.createElement('div');
         messageContainer.className = 'message-container';
         messageContainer.style.display = 'flex';
-        messageContainer.style.alignItems = 'center';
+        messageContainer.style.alignItems = 'bottom';
 
         const avatarImg = document.createElement('img');
         avatarImg.className = 'message-avatar';

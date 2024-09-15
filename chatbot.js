@@ -4,9 +4,9 @@
     let demoLink = null;
     let customerName = null;
     let wsConnected = false;
-    // const host = 'versus-ai-o5lra4qdya-uk.a.run.app'
-    const host = '0.0.0.0:8000'
-    const http_protocol = 'http';
+    const host = 'versus-ai-628399014320.us-east4.run.app'
+    // const host = '0.0.0.0:8000'
+    const http_protocol = 'https';
     const style = document.createElement('style');
     const botImg = "https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/chatbot-icon.png"
     const userImg = "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
@@ -306,6 +306,8 @@ style.textContent += `
             currentChatId = newChat.id;
             demoLink = newChat.demo_link;
             customerName = newChat.customer_name;
+
+            displayMessage(`Hey there! Let me help you find out if ${customerName} is a good fit for you! What are you looking for?`, 'bot')
             setupWebSocket();
         } catch (error) {
             console.error('Error initializing chat:', error);

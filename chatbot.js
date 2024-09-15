@@ -351,7 +351,7 @@ style.textContent += `
     }
    
 
-    window.sendMessage = async function() {
+    window.sendMessage = function() {
         const input = document.getElementById('chat-input');
         const message = input.value.trim();
         if (message && socket) {
@@ -361,8 +361,8 @@ style.textContent += `
                 input.value = '';
             }
             let counter = 0;
-            while(!wsConnected && counter < 40) {
-                setTimeout(100)
+            while(!wsConnected && counter < 10) {
+                setTimeout(1000)
                 counter++;
             }
             socket.send(JSON.stringify({ message: message, chat_id: currentChatId }));
